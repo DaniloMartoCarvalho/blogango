@@ -1,7 +1,7 @@
 from django.test import SimpleTestCase
 from django.urls import resolve, reverse
 
-from .. import views as v
+from .. import views
 
 
 class TestIndexURL(SimpleTestCase):
@@ -12,4 +12,4 @@ class TestIndexURL(SimpleTestCase):
         self.assertEqual(resolve(self.url).route, "")
 
     def test_func_view(self) -> None:
-        self.assertEqual(resolve(self.url).func, v.index)
+        self.assertEqual(resolve(self.url).func, views.index)

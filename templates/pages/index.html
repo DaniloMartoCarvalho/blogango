@@ -3,9 +3,40 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<main style="height: 100vh;">
-  <div class="h-100 d-flex justify-content-center align-items-center">
-    <h1 class="">Djemplate</h1>
-  </div>
+<main class="bg-dark-subtle" style="height: 100vh;">
+  <section class="h-100 d-flex flex-column flex-md-row gap-5 justify-content-center align-items-center">
+
+    <section class="text-center">
+      <h1 class="fs-1 text-dark">Sussurros</h1>
+      <p class="text-dark">Whisper your thoughts to anyone who will listen.</p>
+    </section>
+
+    <section class="">
+      <form action="" method="post" class="" style="min-width: 300px !important;">
+        <div class="p-1">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <input type="email" class="form-control" name="email" placeholder="name@example.com">
+          </div>
+
+          <div class="mb-3">
+            <input type="password" class="form-control" name="password" placeholder="Password">
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex gap-1">
+              <button class="btn btn-outline-success w-100">Login</button>
+              <a href="" class="btn btn-outline-dark w-100">Register</a>
+            </div>
+          </div>
+
+          <a href="" class="btn btn-link fs-6 ps-0">I forgot the password</a>
+
+        </div>
+      </form>
+
+    </section>
+  </section>
 </main>
 {% endblock content %}
