@@ -1,0 +1,10 @@
+{% extends 'article/article_base.html' %}
+
+{% block subtitle %}Home{% endblock subtitle %}
+
+{% block article_content %}
+{% for object in object_list %}
+{% empty %}
+<p>There aren't Articles</p>
+{% endfor %}
+{% endblock article_content %}

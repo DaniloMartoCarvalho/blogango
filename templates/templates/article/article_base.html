@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Sussurros / {% block subtitle %}{% endblock subtitle %}{% endblock title %}
+
+{% block content %}
+<nav class="sticky-top mt-1 mb-3">
+  <div class="container-xxl">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="m-0"><a href="{% url 'articles:article_list' %}" class="fs-4 text-decoration-none text-primary">Sussurros</a></h1>
+      <button class="btn d-lg-none" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSearch">
+        <i class="fa-solid fa-magnifying-glass text-primary"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+{% block article_header %}
+{% endblock article_header %}
+<div class="container-xxl">
+  <main class="row">
+    <main class="col-12 col-lg-8">
+      {% block article_content %}
+      {% endblock article_content %}
+    </main>
+    <aside class="col-lg-4 d-none d-lg-block">
+      <section class="card mb-3">
+        <header class="card-header">
+          <h5>Search</h5>
+        </header>
+        <main class="card-body">
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <button class="btn btn-primary">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </form>
+        </main>
+      </section>
+      <section class="card mb-3">
+        <header class="card-header">
+          <h5>Tags</h5>
+        </header>
+        <main class="card-body">
+          <div class="d-flex flex-wrap gap-1">
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+            <a href="" class="btn btn-outline-primary btn-sm">Tag 1</a>
+          </div>
+        </main>
+      </section>
+    </aside>
+  </main>
+</div>
+<footer>
+  <div class="container-xxl">
+    <p class="text-primary">Sussurros - 2023</p>
+  </div>
+</footer>
+<section class="modal fade" id="modalSearch" tabindex="-1" aria-labelledby="modalSearchLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <form action="" method="post" class="modal-content">
+      {% csrf_token %}
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <button class="btn btn-primary">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock content %}
