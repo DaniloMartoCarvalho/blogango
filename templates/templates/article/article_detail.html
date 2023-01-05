@@ -1,7 +1,18 @@
 {% extends 'article/article_base.html' %}
 
-{% block subtitle %}1{% endblock subtitle %}
+{% block subtitle %}{{ object.title }}{% endblock subtitle %}
+
+{% block article_header %}
+<header class="my-5">
+  <div class="container">
+    <h1 class="text-center">{{ object.title }}</h1>
+  </div>
+</header>
+{% endblock article_header %}
 
 {% block article_content %}
-<p>Article 1</p>
+<article class="mb-3 pb-3 border-bottom">
+  <p class="fst-italic text-secondary fs-6">Published at {{ object.published|date:"SHORT_DATE_FORMAT" }} by {{ object.author }}</p>
+  <p>{{ object.body|linebreaks }}</p>
+</article>
 {% endblock article_content %}

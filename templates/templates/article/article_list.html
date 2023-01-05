@@ -4,6 +4,14 @@
 
 {% block article_content %}
 {% for object in object_list %}
+<article class="mb-3 pb-3 border-bottom">
+  <h3 class="fs3">{{ object.title }}</h3>
+  <p class="fst-italic text-secondary">Published ay {{ object.published|date:"SHORT_DATE_FORMAT" }} by {{ object.author }}</p>
+  <p>{{ object.body|truncatewords:32|linebreaks }}</p>
+  <div class="d-flex justify-content-end">
+    <a href="{{ object.get_absolute_url }}" class="btn btn-outline-dark">Read More <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</article>
 {% empty %}
 <p>There aren't Articles</p>
 {% endfor %}
