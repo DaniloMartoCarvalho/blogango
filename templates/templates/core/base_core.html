@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}{% block subtitle %}{% endblock subtitle %} / Sussurros{% endblock title %}
+
+{% block content %}
+
+{# === HEADERD ===#}
+<header>
+  <div class=" container-lg">
+    <div class="d-flex justify-content-between align-items-center">
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#ModalSearch">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <button class="btn d-none d-md-block" data-bs-toggle="modal" data-bs-target="#ModalNewletter">
+          Newsletter
+        </button>
+      </div>
+
+      <h1 class="m-0">
+        <a href="{% url 'core:index' %}" class="btn text-decoration-none fs-1">
+          Sussurros
+        </a>
+      </h1>
+
+      <div class="btn-group d-none d-md-block" role="group" aria-label="Basic example">
+        <a href="" class="btn">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="" class="btn">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a href="" class="btn">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
+      <button class="btn d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#MenuOffCanvvas"
+        aria-controls="MenuOffCanvvas">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+{% block core_content %}{% endblock core_content %}
+
+<footer class="py-4">
+  <div class="container-lg">
+    <p class="m-0 text-capitalize text-dark fs-6">Sussurros - 2023</p>
+  </div>
+</footer>
+
+{# Modal Search #}
+<div class="modal fade" id="ModalSearch" tabindex="-1" aria-labelledby="ModalSearchLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content" <div class="modal-body">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search Here..." aria-label="Recipient's username"
+            aria-describedby="basic-addon2">
+          <button type="submit" class="input-group-text">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+{# Modal Newsletter #}
+<div class="modal fade" id="ModalNewletter" tabindex="-1" aria-labelledby="ModalNewletterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content" <div class="modal-body">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="input-group">
+          <input type="email" class="form-control" placeholder="What is your email" aria-label="Recipient's username"
+            aria-describedby="basic-addon2">
+          <button type="submit" class="input-group-text">
+            subscribe
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+{# Menu OffCanvas #}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="MenuOffCanvvas" aria-labelledby="MenuOffCanvvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="MenuOffCanvvasLabel">Sussurros</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Sussurrando</p>
+  </div>
+</div>
+
+{% endblock content %}
