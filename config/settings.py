@@ -34,6 +34,7 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    "templates",
     "apps.accounts.apps.AccountsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "apps.core.apps.CoreConfig",
 ]
 
 MIDDLEWARE = [
