@@ -34,7 +34,6 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
-    "templates",
     "apps.accounts.apps.AccountsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -60,7 +59,9 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -79,7 +80,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {"default": config("DATABASE_URL", cast=db_url)}
+DATABASES = {"default": config("DATABASE_URL", cast=db_url),}
 
 
 # Password validation
