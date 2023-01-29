@@ -1,14 +1,17 @@
-version: '3'
+version: '3.9'
+
+volumes:
+  storage: {}
+
 services:
   database:
     image: postgres:15.1-alpine3.17
+    restart: always
     volumes:
       - storage:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
-volumes:
-  storage:
+      POSTGRES_USER: sussurros
+      POSTGRES_DB: sussurros
+      POSTGRES_PASSWORD: sussurros
