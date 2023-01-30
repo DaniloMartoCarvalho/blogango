@@ -1,0 +1,16 @@
+version: '3.9'
+
+volumes:
+  storage: {}
+
+services:
+  database:
+    image: postgres:15.1-alpine3.17
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: djangoblog
+      POSTGRES_PASSWORD: djangoblog
+      POSTGRES_DB: djangoblog
+    volumes:
+      - storage:/var/lib/postgresql/data
