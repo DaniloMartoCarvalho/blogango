@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+Article: {{ object.title}}
+{% endblock title %}
+
+{% block header %}
+{{ object.title }}
+{% endblock header %}
+
+{% block content %}
+<article class="mb-3 card border-0">
+  <div class="card-body">
+    <p class="text-secondary fst-italic fs-6">Publication to {{ object.author|capfirst }}</p>
+    <div>
+      {{ object.body|linebreaks }}
+    </div>
+  </div>
+</article>
+{% endblock content %}
