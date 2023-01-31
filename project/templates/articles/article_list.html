@@ -11,8 +11,8 @@
       <div>{{ object.body|truncatewords:32|linebreaks }}</div>
     </article>
   </a>
-
   {% empty %}
   <p class="alert alert-secondary">No articles have been published yet</p>
   {% endfor %}
+  {% include "../includes/pagination.html" %}
 {% endblock content %}

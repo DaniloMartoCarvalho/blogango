@@ -6,7 +6,7 @@ from .mixins import ArticleMixin
 
 
 class ArticleList(ArticleMixin, generic.ListView):
-    pass
+    paginate_by = 10
 
 
 articles_list = ArticleList.as_view()
