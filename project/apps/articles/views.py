@@ -2,24 +2,18 @@
 
 from django.views import generic
 
+from .mixins import ArticleMixin
 
-class ArticleList(generic.TemplateView):
-    """
-    Points the template to the URL that will list all the articles
-    """
 
-    template_name = "articles/articles_list.html"
+class ArticleList(ArticleMixin, generic.ListView):
+    pass
 
 
 articles_list = ArticleList.as_view()
 
 
-class ArticleDetail(generic.TemplateView):
-    """
-    Points the template to the URL that will display only one article
-    """
-
-    template_name = "articles/articles_detail.html"
+class ArticleDetail(ArticleMixin, generic.DetailView):
+    pass
 
 
 articles_detail = ArticleDetail.as_view()
