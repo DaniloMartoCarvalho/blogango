@@ -1,0 +1,14 @@
+{% if tags %}
+<section class="shadow mb-3">
+  <header class="p-3">
+    <h5 class="pb-1 border-bottom border-danger">Tags</h5>
+  </header>
+  <main class="p-3">
+    {% for tag in tags %}
+     <span class="btn btn-sm btn-outline-danger">
+       {{ tag.name }}
+     </span>
+    {% endfor %}
+  </main>
+</section>
+{% endif %}

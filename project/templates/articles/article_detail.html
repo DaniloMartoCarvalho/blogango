@@ -11,10 +11,15 @@ Article: {{ object.title}}
 {% block content %}
 <article class="mb-3 card border-0">
   <div class="card-body">
-    <p class="text-secondary fst-italic fs-6">Publication to {{ object.author|capfirst }}</p>
+    <p class="text-secondary fst-italic fs-6">Publication at {{ object.published|date:"SHORT_DATE_FORMAT" }} by {{ object.author|capfirst }}</p>
     <div>
       {{ object.body|linebreaks }}
     </div>
+    {% for tag in object.tags.all %}
+      <span class="btn btn-outline-danger btn-sm">
+        {{ tag.name}}
+      </span>
+    {% endfor %}
   </div>
 </article>
 {% endblock content %}

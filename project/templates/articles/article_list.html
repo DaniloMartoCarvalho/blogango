@@ -4,13 +4,20 @@
 
 {% block content %}
   {% for object in object_list %}
-  <a class="text-dark text-decoration-none" href="{% url 'articles:detail' pk=object.pk %}">
-    <article class="py-2 mb-3 border-bottom border-danger">
-      <h3 class="mb-3">{{ object.title }}</h3>
-      <p class="fst-italic fs-6 text-secondary">Published by {{ object.author }}</p>
+    <article class="py-2 mb-3 border-bottom">
+      <h3><a class="text-dark" href="{% url 'articles:detail' pk=object.pk %}">
+          {{ object.title }}
+      </a></h3>
+      <p class="fst-italic fs-6 text-secondary">Published at {{ object.published|date:"SHORT_DATE_FORMAT" }} by {{ object.author }}</p>
       <div>{{ object.body|truncatewords:32|linebreaks }}</div>
+
+      {% for tag in object.tags.all %}
+      <span class="btn btn-outline-danger btn-sm">
+        {{ tag.name }}
+      </span>
+      {% endfor %}
+
     </article>
-  </a>
   {% empty %}
   <p class="alert alert-secondary">No articles have been published yet</p>
   {% endfor %}
