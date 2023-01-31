@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+  {% for object in object_list %}
+  <a class="text-dark text-decoration-none" href="{% url 'articles:detail' pk=object.pk %}">
+    <article class="py-2 mb-3 border-bottom border-danger">
+      <h3 class="mb-3">{{ object.title }}</h3>
+      <p class="fst-italic fs-6 text-secondary">Published by {{ object.author }}</p>
+      <div>{{ object.body|truncatewords:32|linebreaks }}</div>
+    </article>
+  </a>
+
+  {% empty %}
+  <p class="alert alert-secondary">No articles have been published yet</p>
+  {% endfor %}
+{% endblock content %}
