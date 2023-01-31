@@ -17,7 +17,10 @@ class ArticlesListUrlTestCase(SimpleTestCase):
 class ArticleDetailUrlTestCase(SimpleTestCase):
     def setUp(self) -> None:
         datas = {
-            "pk": 1,
+            "year": 2023,
+            "month": 1,
+            "day": 31,
+            "article_slug": "test-slug",
         }
         self.match = resolve(reverse("articles:detail", kwargs=datas))
 
@@ -27,7 +30,18 @@ class ArticleDetailUrlTestCase(SimpleTestCase):
     def test_all_keyword_arguments_that_would_be_passed_to_the_view_function(
         self,
     ) -> None:
-        self.assertEqual(self.match.kwargs, {"pk": 1})
+        self.assertEqual(
+            self.match.kwargs,
+            {
+                "year": 2023,
+                "month": 1,
+                "day": 31,
+                "article_slug": "test-slug",
+            },
+        )
 
     def test_the_route_of_the_matching_URL_pattern(self) -> None:
-        self.assertEqual(self.match.route, "article/<int:pk>/")
+        self.assertEqual(
+            self.match.route,
+            "article/<int:year>/<int:month>/<int:day>/<slug:article_slug>/",
+        )

@@ -52,12 +52,7 @@ class ArticleListviewWhenIsPaginated(TestCase):
 class ArticleDetailViewTestCase(TestCase):
     def setUp(self) -> None:
         article = ArticleFactory()
-
-        datas = {
-            "pk": article.pk,
-        }
-
-        self.request = self.client.get(reverse("articles:detail", kwargs=datas))
+        self.request = self.client.get(article.get_absolute_url())
 
     def test_the_request_status_code(self) -> None:
         self.assertEqual(self.request.status_code, 200)
