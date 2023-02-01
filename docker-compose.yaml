@@ -1,0 +1,16 @@
+version: '3.9'
+
+volumes:
+  storage: {}
+
+services:
+  database:
+    image: postgres:15.1-alpine3.17
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: djemplate
+      POSTGRES_PASSWORD: djemplate
+      POSTGRES_DB: djemplate
+    volumes:
+      - storage:/var/lib/postgresql/data

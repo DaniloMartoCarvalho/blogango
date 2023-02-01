@@ -1,0 +1,53 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master", "development" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: githubci
+          POSTGRES_USER: githubci
+          POSTGRES_DB: githubci
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    env:
+      SECRET_KEY: yzbz$ux+$om*9%!2yl1o6$%!_8d1y8!olb4bjc34li(!m6s#yo
+      DEBUG: True
+      ALLOWED_HOSTS: 127.0.0.1,localhost,0.0.0.0
+      DATABASE_URL: postgres://githubci:githubci@0.0.0.0:5432/githubci
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.11.1
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11.1
+
+      - name: Installing poetry
+        run: |
+          pip install --upgrade pip
+          pip install poetry
+
+      - name: Installing the dependencies
+        run: |
+          poetry export -f requirements.txt --without-hashes --with dev -o requirements.txt
+          pip install -r requirements.txt
+
+      - name: Run Test
+        run: |
+          python blogango/manage.py test
