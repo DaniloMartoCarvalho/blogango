@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.utils.translation import gettext as _
 from model_utils.models import TimeStampedModel
+from taggit.managers import TaggableManager
 
 
 class ArticleManager(models.Manager):
@@ -29,8 +30,8 @@ class Article(TimeStampedModel):
     status = models.CharField(
         _("status"), max_length=1, choices=Status.choices, default=Status.DRAFT
     )
-
     published = models.DateTimeField(_("published"), default=timezone.now)
+    tags = TaggableManager(_("tags"), blank=True)
 
     objects = ArticleManager()
 

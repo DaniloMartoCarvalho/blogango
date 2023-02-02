@@ -1,14 +1,22 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, ListView
 
-from .mixins import ArticleMixin
+from .mixins import BaseArticleDetailView, BaseArticleListView, TagMixin
 
 
-class ArticleList(ArticleMixin, ListView):
+class ArticleList(TagMixin, BaseArticleListView):
     paginate_by = 10
 
+    def get_queryset(self):
+        self.tag = self.get_tag()
+        queryset = super().get_queryset()
 
-class ArticleDetail(ArticleMixin, DetailView):
+        if self.tag:
+            queryset = queryset.filter(tags__in=[self.tag])
+
+        return queryset
+
+
+class ArticleDetail(TagMixin, BaseArticleDetailView):
     def get_object(self):
         self.object = get_object_or_404(
             self.queryset,

@@ -1,0 +1,16 @@
+<article class="mb-3 pb-3 border-bottom">
+  <p class="fst-italic text-secondary fs-6">Published at {{ object.published|date:"SHORT_DATE_FORMAT"}} by {{ object.author|capfirst }}</p>
+  {% if not detail %}
+    <h3 class="fs-3 text-dark">{{ object.title }}</h3>
+    <div>{{ object.body|truncatewords:32|linebreaks }}</div>
+  {% else %}
+    <div>{{ object.body|linebreaks }}</div>
+  {% endif %}
+  <div class="">
+    {% for tag in object.tags.all %}
+    <a class="btn btn-link" href="{% url 'articles:article_list_by_tag' tag_slug=tag.slug %}">
+      {{ tag.name }}
+    </a>
+    {% endfor %}
+  </div>
+</article>

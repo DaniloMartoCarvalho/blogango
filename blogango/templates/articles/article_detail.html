@@ -9,11 +9,5 @@ Article: {{ object.title }}
 {% endblock header %}
 
 {% block content %}
-  <article class="mb-3 pb-3 border-bottom">
-    <p class="fst-italic text-secondary fs-6">
-      Published at {{ object.published|date:"SHORT_DATE_FORMAT"}} by {{ object.author|capfirst }}
-    </p>
-     <div>{{ object.body|linebreaks }}</div>
-
-  </article>
+  {% include "../includes/article.html" with detail=True %}
 {% endblock content %}

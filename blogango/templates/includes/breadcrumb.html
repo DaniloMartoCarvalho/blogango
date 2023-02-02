@@ -2,12 +2,23 @@
 <div class="sticky-top bg-white py-3 d-none d-md-block">
   <nav class="" aria-label="breadcrumb">
     <ol class="breadcrumb m-0">
-      {% if not object %}
+
+      {% if not object and not tag %}
       <li class="breadcrumb-item active" aria-current="page">Home</li>
       {% else %}
       <li class="breadcrumb-item"><a href="{% url 'articles:article_list' %}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Article: {{ object.title|truncatechars:16 }}</li>
       {% endif %}
+
+      {% if not object and tag %}
+      <li class="breadcrumb-item active" aria-current="page">tag: {{ tag.name }}</li>
+      {% elif object and tag %}
+      <li class="breadcrumb-item"><a href="{% url 'articles:article_list_by_tag' tag_slug=tag.slug %}">tag: {{ tag.name }}</a></li>
+      {% endif %}
+
+      {% if object %}
+      <li class="breadcrumb-item active" aria-current="page">article: {{ object.title|truncatechars:16 }}</li>
+      {% endif %}
+
     </ol>
   </nav>
 </div>

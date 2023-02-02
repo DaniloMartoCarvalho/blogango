@@ -122,6 +122,21 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-taggit"
+version = "3.1.0"
+description = "django-taggit is a reusable Django application for simple tagging."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django-taggit-3.1.0.tar.gz", hash = "sha256:c8f2e4eae387939089b3d75d1d8649e008880970c068ce9d0e82f87fd5e29508"},
+    {file = "django_taggit-3.1.0-py3-none-any.whl", hash = "sha256:543218ac346fbe02a65733e0341c91b57a3e0f7a41568966b26f1cea9edc4805"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "factory-boy"
 version = "3.2.1"
 description = "A versatile test fixtures replacement based on thoughtbot's factory_bot for Ruby."
@@ -552,4 +567,4 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "8a7e17a93f4cbb0a8b155e1d9b0afc59f673bf211e9bb56006e2e88f36be83d2"
+content-hash = "cdfb700b5fd1362a94bb2aea286bfd2b337178c0a9bfb5c5c46332dbd8432a9e"

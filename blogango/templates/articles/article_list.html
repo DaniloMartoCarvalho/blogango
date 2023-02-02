@@ -4,19 +4,21 @@
 
 {% block content %}
   {% for object in object_list %}
-
-  <article class="mb-3 pb-3 border-bottom">
-    <h3 class="fs-3 text-dark">{{ object.title }}</h3>
-    <p class="fst-italic text-secondary fs-6">
-      Published at {{ object.published|date:"SHORT_DATE_FORMAT"}} by {{ object.author|capfirst }}
-    </p>
-     <div>{{ object.body|truncatewords:32|linebreaks }}</div>
-
-     <a class="btn btn-outline-primary" href="{{ object.get_absolute_url }}">Read More</a>
-  </article>
-
+    {% if tag %}
+      {% with object.published as op %}
+        <a class="text-decoration-none text-dark"
+           href="{% url 'articles:article_detail_by_tag' tag_slug=tag.slug year=op.year month=op.month day=op.day article_slug=object.slug %}"
+        >
+          {% include "../includes/article.html" %}
+        </a>
+        {% endwith %}
+    {% else %}
+      <a class="text-decoration-none text-dark" href="{{ object.get_absolute_url}}">
+        {% include "../includes/article.html" %}
+      </a>
+    {% endif %}
   {% empty%}
-  <p class="alert alert-secondary">There are no published articles yet</p>
+    <p class="alert alert-secondary">There are no published articles yet</p>
   {% endfor %}
   {% include "../includes/pagination.html" %}
 {% endblock content %}
