@@ -1,0 +1,13 @@
+<!-- breadcrumb -->
+<div class="sticky-top bg-white py-3 d-none d-md-block">
+  <nav class="" aria-label="breadcrumb">
+    <ol class="breadcrumb m-0">
+      {% if not object %}
+      <li class="breadcrumb-item active" aria-current="page">Home</li>
+      {% else %}
+      <li class="breadcrumb-item"><a class="text-danger" href="{% url 'articles:article_list' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Article: {{ object.title|truncatechars:16 }}</li>
+      {% endif %}
+    </ol>
+  </nav>
+</div>

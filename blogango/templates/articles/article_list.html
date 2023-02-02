@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  {% for object in object_list %}
+  {% empty%}
+  <p class="alert alert-secondary">There are no published articles yet</p>
+  {% endfor %}
+{% endblock content %}
