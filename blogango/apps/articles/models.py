@@ -51,7 +51,10 @@ class Article(TimeStampedModel):
 
     def get_absolute_url(self):
         datas = {
-            "pk": self.pk,
+            "year": self.published.year,
+            "month": self.published.month,
+            "day": self.published.day,
+            "article_slug": self.slug,
         }
 
         return reverse("articles:article_detail", kwargs=datas)

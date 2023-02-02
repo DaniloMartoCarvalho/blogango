@@ -22,7 +22,10 @@ class TestArticleModel:
         article = ArticleFactory()
 
         datas = {
-            "pk": article.pk,
+            "year": article.published.year,
+            "month": article.published.month,
+            "day": article.published.day,
+            "article_slug": article.slug,
         }
 
         url = reverse("articles:article_detail", kwargs=datas)

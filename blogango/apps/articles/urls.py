@@ -11,7 +11,7 @@ urlpatterns = [
         name="article_list",
     ),
     path(
-        "articles/<int:pk>/",
+        "articles/<int:year>/<int:month>/<int:day>/<slug:article_slug>/",
         views.ArticleDetail.as_view(),
         name="article_detail",
     ),
