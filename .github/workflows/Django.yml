@@ -50,4 +50,5 @@ jobs:
 
       - name: Run Test
         run: |
-          python blogango/manage.py test
+          cd blogango
+          pytest
