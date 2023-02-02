@@ -5,7 +5,7 @@
       {% if not object %}
       <li class="breadcrumb-item active" aria-current="page">Home</li>
       {% else %}
-      <li class="breadcrumb-item"><a class="text-danger" href="{% url 'articles:article_list' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'articles:article_list' %}">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Article: {{ object.title|truncatechars:16 }}</li>
       {% endif %}
     </ol>

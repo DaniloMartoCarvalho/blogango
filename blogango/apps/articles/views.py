@@ -1,9 +1,11 @@
-from django.views.generic import TemplateView
+from django.views.generic import DetailView, ListView
+
+from .mixins import ArticleMixin
 
 
-class ArticleList(TemplateView):
-    template_name = "articles/article_list.html"
+class ArticleList(ArticleMixin, ListView):
+    paginate_by = 10
 
 
-class ArticleDetail(TemplateView):
-    template_name = "articles/article_detail.html"
+class ArticleDetail(ArticleMixin, DetailView):
+    pass
