@@ -21,7 +21,6 @@ class TagMixin:
     tag = None
 
     def get_tag(self):
-
         if not self.tag:
             tag_slug = self.kwargs.get("tag_slug")
             self.tag = get_object_or_404(Tag, slug=tag_slug) if tag_slug else None
